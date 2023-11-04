@@ -14,8 +14,6 @@ const MoviesPage = () => {
         })
     }, []);
 
-console.log(movies);
-
 
     return (
         <div>

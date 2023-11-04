@@ -8,7 +8,7 @@ const character = '/movie';
 const urls = {
     movies,
     genre,
-    poster: (key: string) => `${poster}/${key}`,
+    poster: (key: string) => `${poster}${key}`,
     search,
     character: (id: number) => `${character}/${id}/credits`
 }
