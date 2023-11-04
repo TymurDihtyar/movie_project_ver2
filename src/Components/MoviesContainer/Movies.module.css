@@ -1,0 +1,4 @@
+.allMovies {
+    display: flex;
+    flex-wrap: wrap;
+}
