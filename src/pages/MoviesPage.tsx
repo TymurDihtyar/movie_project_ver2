@@ -1,24 +1,25 @@
 import {Outlet} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {moviesService} from "../services/moviesService";
+import {moviesService} from "../services";
+import {IMovie} from "../interfaces";
+import {Movies} from "../Components/MoviesContainer/Movies";
 
 const MoviesPage = () => {
-    const [movies, setMovies] = useState<any>([])
+    const [movies, setMovies] = useState<IMovie[]>([])
     // const [query, setQuery] = useSearchParams<any>({page: '1'});
 
     useEffect(() => {
-        moviesService.getAll('1').then(({data}: any) => {
-            setMovies(data)
-            console.log(data);
+        moviesService.getAll('1').then(({data}) => {
+            setMovies(data.results)
         })
     }, []);
 
-
+console.log(movies);
 
 
     return (
         <div>
-            MoviesPage
+            <Movies movies={movies}/>
             <Outlet/>
         </div>
     );
