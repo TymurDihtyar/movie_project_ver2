@@ -10,7 +10,7 @@ const urls = {
     genre,
     poster: (key: string) => `${poster}/${key}`,
     search,
-    character: (id:number) => `${character}/${id}/credits`
+    character: (id: number) => `${character}/${id}/credits`
 }
 
 export {baseURL, urls}
