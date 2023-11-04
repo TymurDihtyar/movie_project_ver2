@@ -11,7 +11,7 @@ const Header = () => {
                 <NavLink to={'search'}>Search</NavLink>
             </div>
             <div className={css.user}>
-                <img src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" alt="user"/>
+                <img src="https://cdn-icons-png.flaticon.com/512/848/848006.png" alt="user"/>
             </div>
         </div>
     );
