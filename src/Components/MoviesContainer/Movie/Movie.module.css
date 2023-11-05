@@ -16,5 +16,6 @@
 .movie h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 25px;
+    letter-spacing: 2px;
     margin: 0;
 }
