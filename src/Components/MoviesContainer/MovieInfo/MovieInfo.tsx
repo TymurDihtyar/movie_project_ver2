@@ -40,8 +40,7 @@ const MovieInfo: FC<IProps> = ({movie, characters}) => {
                             item.profile_path ?
                                 <img src={urls.poster(item.profile_path)} alt={item.character}/>
                                 :
-                                <img
-                                    src="https://www.trendzbd.com/web/images/miscellaneous/no_image_found.jpg"
+                                <img src="https://www.trendzbd.com/web/images/miscellaneous/no_image_found.jpg"
                                     alt={item.character}/>
                         }
                         <div>{item.name}</div>
