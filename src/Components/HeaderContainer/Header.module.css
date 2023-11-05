@@ -18,7 +18,7 @@
 }
 
 .header a[class='active'] {
-    color: #b9b6b1;
+    color: #7a734d;
 }
 
 .logo {
@@ -37,4 +37,8 @@
 .user h6 {
     margin: 0;
     font-size: 20px;
+}
+
+.mid {
+    margin-right: 120px;
 }

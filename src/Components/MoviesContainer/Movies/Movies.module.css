@@ -17,6 +17,7 @@
     font-family: 'Bebas Neue', sans-serif;
     margin: 0 10px;
     font-size: 20px;
+    color: #7a734d;
 }
 
 .butt button {
@@ -25,4 +26,5 @@
     width: 90px;
     font-size: 20px;
     border-radius: 10px;
+    color: #7a734d;
 }

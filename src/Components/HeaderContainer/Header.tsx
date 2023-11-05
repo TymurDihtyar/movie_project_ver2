@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className={css.header}>
             <div className={css.logo}>The MovieDB</div>
-            <div>
+            <div className={css.mid}>
                 <NavLink to={'movies'}>Movies</NavLink>
                 <NavLink to={'genres'}>Genres</NavLink>
                 <NavLink to={'search'}>Search</NavLink>

@@ -3,14 +3,15 @@ const movies = '/discover/movie';
 const genre = '/genre/movie/list';
 const poster = 'https://image.tmdb.org/t/p/w500';
 const search = '/search/keyword';
-const character = '/movie';
+const characters = '/movie';
 
 const urls = {
     movies,
     genre,
     poster: (key: string) => `${poster}${key}`,
     search,
-    character: (id: number) => `${character}/${id}/credits`
+    characters: (id: string) => `${characters}/${id}/credits`,
+    movie: (id: string) => `${characters}/${id}`
 }
 
 export {baseURL, urls}

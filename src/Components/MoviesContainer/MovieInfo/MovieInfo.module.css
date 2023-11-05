@@ -1,0 +1,74 @@
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 50px 0 50px;
+    box-sizing: border-box;
+    color: #7a734d;
+}
+
+p {
+    font-size: 25px;
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0 400px;
+}
+
+img {
+    border-radius: 20px;
+}
+
+h3 {
+    font-size: 45px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: gold;
+}
+
+h4 {
+    font-size: 35px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.genresBox {
+    color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.genre {
+    margin: 0 10px;
+    padding: 0;
+}
+
+.charactersBox {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 50px;
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #7a734d;
+    width: 12.5%;
+}
+
+.character img {
+    width: 150px;
+    height: 225px;
+    margin-bottom: 5px;
+}
