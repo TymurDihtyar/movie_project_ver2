@@ -25,7 +25,7 @@ const Movies: FC<IProps> = ({movies, prevNext, setQuery, page}) => {
     }
 
     console.log(prevNext.prev);
-    console.log(prevNext.next);
+    console.log(page);
 
     return (
         <div className={css.allMovies}>
