@@ -12,6 +12,7 @@ const Header = () => {
             </div>
             <div className={css.user}>
                 <img src="https://cdn-icons-png.flaticon.com/512/848/848006.png" alt="user"/>
+                <h6>User77</h6>
             </div>
         </div>
     );

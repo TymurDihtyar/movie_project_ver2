@@ -11,11 +11,12 @@
 .movie img {
     height: 500px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .movie h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 25px;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     margin: 0;
 }
