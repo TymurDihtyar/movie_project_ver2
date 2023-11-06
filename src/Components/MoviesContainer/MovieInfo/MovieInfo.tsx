@@ -4,7 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 import {ICast, IOneMove} from "../../../interfaces";
 import {urls} from "../../../constants/urls";
-import {GenresInMovieInfo} from "../../GenresContainer";
+import {GenresInMovieInfo} from "../../GenresContainer/GenresInMovieInfo";
 import {CharactersInMovieInfo} from "../../CharactersContainer";
 import css from './MovieInfo.module.css'
 

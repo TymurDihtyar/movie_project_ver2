@@ -1,8 +1,5 @@
+import {IGenre} from "./oneMovieInteface";
+
 export interface IGenres {
     genres: IGenre[]
-}
-
-export interface IGenre {
-    id: number
-    name: string
 }
