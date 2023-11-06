@@ -9,6 +9,7 @@
     font-size: 40px;
     font-family: 'Bebas Neue', sans-serif;
     color: #e65100;
+    letter-spacing: 1px;
 }
 
 .header a {
@@ -37,7 +38,6 @@
 .user h6 {
     margin: 0;
     font-size: 20px;
-    letter-spacing: 1px;
 }
 
 .mid {
