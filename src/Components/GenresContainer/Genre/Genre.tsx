@@ -2,18 +2,18 @@ import {FC, PropsWithChildren} from 'react';
 import {Button} from "@mui/material";
 
 import {IGenre} from "../../../interfaces";
-import css from './Genre.module.css'
+import {useNavigate} from "react-router-dom";
 
 interface IProps extends PropsWithChildren {
-    item:IGenre
+    item: IGenre
 }
 
-const Genre:FC<IProps> = ({item}) => {
-    const {id:idGenre, name:nameGenre} = item;
-
+const Genre: FC<IProps> = ({item}) => {
+    const {id:idGenres, name: nameGenre} = item;
+    const navigate = useNavigate()
 
     return (
-            <Button className={css.genreButt}>{nameGenre}</Button>
+        <Button onClick={() => navigate(`${idGenres}`)}>{nameGenre}</Button>
     );
 };
 
