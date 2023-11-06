@@ -9,13 +9,11 @@ const GenreIdPage = () => {
     const {idGenres} = useParams<string>()
     const [ganerMovies, setGanerMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page')
+    const page = query.get('page') ? query.get('page') : '1'
 
     useEffect(() => {
-        genresService.getMoviesById(page, idGenres).then(({data})=> setGanerMovies(data.results))
+        genresService.getMoviesById(page, idGenres).then(({data}) => setGanerMovies(data.results))
     }, [page, idGenres]);
-
-    console.log(idGenres);
 
     return (
         <div>
