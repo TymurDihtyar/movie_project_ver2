@@ -5,6 +5,7 @@ import {IMovie} from "../../../interfaces";
 import {urls} from "../../../constants/urls";
 import css from './Movie.module.css'
 import {useNavigate} from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 
 interface IProps extends PropsWithChildren {
     item: IMovie
@@ -17,7 +18,9 @@ const Movie: FC<IProps> = ({item}) => {
     return (
         <div className={css.movie}>
             <img onClick={() => navigate(`/movies/${id}`)} src={`${urls.poster(poster_path)}`} alt="original_title"/>
-            <Rating name="customized-10" defaultValue={vote_average} precision={0.1} max={10} readOnly/>
+            <Rating name="customized-10" defaultValue={vote_average} precision={0.1} max={10} size="medium"
+                    emptyIcon={<StarIcon style={{opacity: 1, color: 'gray'}} fontSize="inherit"/>}
+                    readOnly/>
             <h3>{original_title}</h3>
         </div>
     );

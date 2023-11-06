@@ -8,7 +8,7 @@ interface IProps extends PropsWithChildren {
 const GenresInMovieInfo:FC<IProps> = ({item}) => {
     const {id:idGenre, name:nameGenre} = item
     return (
-            <h4 className={css.genre}>{nameGenre}</h4>
+            <p className={css.genre}>{nameGenre}</p>
     );
 };
 

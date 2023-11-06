@@ -4,7 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 import {ICast, IOneMove} from "../../../interfaces";
 import {urls} from "../../../constants/urls";
-import {GenresInMovieInfo} from "../../GenresContainer/GenresInMovieInfo";
+import {GenresInMovieInfo} from "../../GenresContainer";
 import {CharactersInMovieInfo} from "../../CharactersContainer";
 import css from './MovieInfo.module.css'
 
@@ -41,9 +41,11 @@ const MovieInfo: FC<IProps> = ({movie, characters}) => {
                     <p>Runtime: {runtime} min</p>
                 </div>
             </div>
-            <h4>Main Cast:</h4>
-            <div className={css.charactersBox}>
-                {characters.map(item => <CharactersInMovieInfo key={item.id} item={item}/>)}
+            <div>
+                <h4>Main Cast:</h4>
+                <div className={css.charactersBox}>
+                    {characters.map(item => <CharactersInMovieInfo key={item.id} item={item}/>)}
+                </div>
             </div>
         </div>
     );
