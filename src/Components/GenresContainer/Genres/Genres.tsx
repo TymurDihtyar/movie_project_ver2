@@ -12,7 +12,7 @@ interface IProps extends PropsWithChildren {
 const Genres:FC<IProps> = ({genres}) => {
 
     return (
-        <ButtonGroup className={css.buttGroup} variant="contained" aria-label=" outlined primary button group" size={"large"} color='primary'>
+        <ButtonGroup className={css.buttGroup} variant="contained" aria-label=" outlined primary button group" size={"large"} color='warning'>
             {genres && genres.map(item => <Genre key={item.id} item={item}/>)}
         </ButtonGroup>
     );

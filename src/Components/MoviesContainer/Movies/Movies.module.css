@@ -16,7 +16,7 @@
 
 .butt p {
     font-family: 'Bebas Neue', sans-serif;
-    margin: 0 10px;
+    margin: 0 20px;
     font-size: 20px;
     color: #7a734d;
 }
@@ -27,5 +27,7 @@
     width: 90px;
     font-size: 20px;
     border-radius: 10px;
-    color: #7a734d;
+    color: #ffffff;
+    background-color: #e65100;
+    border: none;
 }

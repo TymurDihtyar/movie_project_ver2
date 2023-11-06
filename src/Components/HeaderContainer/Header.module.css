@@ -8,7 +8,7 @@
     height: 150px;
     font-size: 40px;
     font-family: 'Bebas Neue', sans-serif;
-    color: white;
+    color: #e65100;
 }
 
 .header a {
@@ -18,7 +18,7 @@
 }
 
 .header a[class='active'] {
-    color: #7a734d;
+    color: #e65100;
 }
 
 .logo {
@@ -37,6 +37,7 @@
 .user h6 {
     margin: 0;
     font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .mid {
