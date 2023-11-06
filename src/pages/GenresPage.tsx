@@ -1,7 +1,11 @@
+import {useState} from "react";
+
 const GenresPage = () => {
+    const [genres, setGenres] = useState()
+
     return (
         <div>
-            GenresPage
+
         </div>
     );
 };
