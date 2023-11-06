@@ -4,6 +4,8 @@ import StarIcon from '@mui/icons-material/Star';
 
 import {ICast, IOneMove} from "../../../interfaces";
 import {urls} from "../../../constants/urls";
+import {GenresInMovieInfo} from "../../GenresContainer";
+import {CharactersInMovieInfo} from "../../CharactersContainer";
 import css from './MovieInfo.module.css'
 
 interface IProps extends PropsWithChildren {
@@ -25,27 +27,14 @@ const MovieInfo: FC<IProps> = ({movie, characters}) => {
                         emptyIcon={<StarIcon style={{opacity: 1, color: 'gray'}} fontSize="inherit"/>} readOnly/>
                 <h4>Genres:</h4>
                 <div className={css.genresBox}>
-                    {genres.map(item => (
-                        <p className={css.genre} key={item.id}>{item.name}</p>
-                    ))}
+                    {genres.map(item => <GenresInMovieInfo key={item.id} item={item}/>)}
                 </div>
                 <p>Release date: {release_date}</p>
                 <p>Runtime: {runtime} min</p>
                 <h4>Main Cast:</h4>
             </div>
             <div className={css.charactersBox}>
-                {characters.map(item => (
-                    <div className={css.character} key={item.id}>
-                        {
-                            item.profile_path ?
-                                <img src={urls.poster(item.profile_path)} alt={item.character}/>
-                                :
-                                <img src="https://www.trendzbd.com/web/images/miscellaneous/no_image_found.jpg"
-                                    alt={item.character}/>
-                        }
-                        <div>{item.name}</div>
-                    </div>
-                ))}
+                {characters.map(item => <CharactersInMovieInfo key={item.id} item={item}/>)}
             </div>
         </>
     );

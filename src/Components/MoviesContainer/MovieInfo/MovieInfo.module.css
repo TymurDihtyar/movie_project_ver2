@@ -34,41 +34,10 @@ h4 {
     margin-bottom: 10px;
 }
 
-.genresBox {
-    color: gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.genre {
-    margin: 0 10px;
-    padding: 0;
-}
-
 .charactersBox {
     display: flex;
     flex-wrap: wrap;
     padding: 20px 50px;
 }
 
-.character {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #7a734d;
-    width: 12.5%;
-}
 
-.character img {
-    width: 150px;
-    height: 225px;
-    margin-bottom: 5px;
-}

@@ -1,0 +1,12 @@
+.genresBox {
+    color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.genre {
+    margin: 0 10px;
+    padding: 0;
+}
