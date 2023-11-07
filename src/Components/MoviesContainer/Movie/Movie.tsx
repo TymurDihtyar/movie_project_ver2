@@ -1,11 +1,11 @@
 import {FC, PropsWithChildren} from 'react';
+import {useNavigate} from "react-router-dom";
 import {Rating} from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
 
 import {IMovie} from "../../../interfaces";
 import {urls} from "../../../constants/urls";
 import css from './Movie.module.css'
-import {useNavigate} from "react-router-dom";
-import StarIcon from "@mui/icons-material/Star";
 
 interface IProps extends PropsWithChildren {
     item: IMovie

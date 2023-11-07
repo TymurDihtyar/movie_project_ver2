@@ -14,7 +14,7 @@ const Genre: FC<IProps> = ({item}) => {
     const navigate = useNavigate()
 
     return (
-        <Button className={css.butt} onClick={() => navigate(`${idGenres}`)}>{nameGenre}</Button>
+        <Button style={{fontFamily: 'Bebas Neue, sans-serif', fontSize:'18px'}} className={css.butt} onClick={() => navigate(`${idGenres}`)}>{nameGenre}</Button>
     );
 };
 

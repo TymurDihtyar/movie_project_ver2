@@ -18,7 +18,6 @@ const SearchPage = () => {
     return (
         <div>
             <SearchForm setKeyWord={setKeyWord}/>
-            <hr/>
             <Movies movies={moviesKeyWord} page={page} setQuery={setQuery}/>
         </div>
     );
