@@ -1,19 +1,16 @@
-import {FC, PropsWithChildren} from 'react';
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 import {IKeyWord} from "../../../interfaces";
-import {ISetState} from "../../../types";
 import css from './SearchForm.module.css'
 
-interface IProps extends PropsWithChildren {
-    setKeyWord: ISetState<string>
-}
-
-const SearchForm:FC<IProps> = ({setKeyWord}) => {
+const SearchForm = () => {
     const {reset, handleSubmit, register} = useForm()
+    const navigate = useNavigate()
 
-    const search = async (keyWord: IKeyWord) => {
-        setKeyWord(keyWord.Keyword)
+    const search = (keyWord: IKeyWord) => {
+        const searchWord =  keyWord.Keyword
+        navigate(`${searchWord}`)
         reset()
     };
 

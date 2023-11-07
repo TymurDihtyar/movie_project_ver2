@@ -1,24 +1,13 @@
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 
-import {Movies, SearchForm} from "../Components";
-import {IMovie} from "../interfaces";
-import {searchService} from "../services";
+import {SearchForm} from "../Components";
 
 const SearchPage = () => {
-    const [KeyWord, setKeyWord] = useState<string>( 'porn')
-    const [moviesKeyWord, setMoviesKeyWord] = useState<IMovie[]>([])
-    const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page') ? query.get('page') : '1'
-
-    useEffect(() => {
-        searchService.getByKeyWord(page, KeyWord).then(({data}) => setMoviesKeyWord(data.results))
-    }, [page, KeyWord]);
 
     return (
         <div>
-            <SearchForm setKeyWord={setKeyWord}/>
-            <Movies movies={moviesKeyWord} page={page} setQuery={setQuery}/>
+            <SearchForm/>
+            <Outlet/>
         </div>
     );
 };
