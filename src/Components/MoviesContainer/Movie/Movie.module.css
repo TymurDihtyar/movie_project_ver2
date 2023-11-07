@@ -7,11 +7,14 @@
     box-sizing: border-box;
     gap: 5px;
     width: 20%;
+    transition: 0.5s;
 }
 .movie img {
     height: 500px;
+    width: 333px;
     border-radius: 20px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .movie h3 {
@@ -20,4 +23,8 @@
     letter-spacing: 1.5px;
     margin: 0;
     color: #e65100;
+}
+
+.movie:hover {
+    scale: 105%;
 }

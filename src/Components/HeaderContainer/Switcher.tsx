@@ -1,11 +1,11 @@
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 const Switcher = () => {
     const [checked, setChecked] = useState(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setChecked(event.target.checked);
         if (!checked) {
             document.body.classList.add('dark-theme');
