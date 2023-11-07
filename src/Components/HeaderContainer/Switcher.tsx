@@ -21,7 +21,7 @@ const Switcher = () => {
                 color="warning"
                 inputProps={{'aria-label': 'controlled'}}
             />}
-            label="LiteMode"
+            label="Mode"
             labelPlacement="top"
         />
     );
