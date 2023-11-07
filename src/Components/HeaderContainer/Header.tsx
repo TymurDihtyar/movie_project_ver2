@@ -10,7 +10,7 @@ const Header = () => {
             <div>
                 <NavLink to={'movies'}>Movies</NavLink>
                 <NavLink to={'genres/:idGenres'}>Genres</NavLink>
-                <NavLink to={'search'}>Search</NavLink>
+                <NavLink to={'search/:searchWord'}>Search</NavLink>
             </div>
             <div className={css.switchUser}>
                 <Switcher/>
