@@ -43,3 +43,10 @@
 .mid {
     margin-right: 120px;
 }
+
+.switchUser {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+}
