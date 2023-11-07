@@ -1,23 +1,23 @@
 import {useEffect, useState} from "react";
-import {IMovie} from "../interfaces";
 import {useParams, useSearchParams} from "react-router-dom";
 
-import {genresService} from "../services/genresService";
+import {IMovie} from "../interfaces";
 import {Movies} from "../Components";
+import {genresService} from "../services";
 
 const GenreIdPage = () => {
     const {idGenres} = useParams<string>()
-    const [ganerMovies, setGanerMovies] = useState<IMovie[]>([])
+    const [genreMovies, setGenreMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page') ? query.get('page') : '1'
 
     useEffect(() => {
-        genresService.getMoviesById(page, idGenres).then(({data}) => setGanerMovies(data.results))
+        genresService.getMoviesById(page, idGenres).then(({data}) => setGenreMovies(data.results))
     }, [page, idGenres]);
 
     return (
         <div>
-            <Movies movies={ganerMovies} page={page} setQuery={setQuery}/>
+            <Movies movies={genreMovies} page={page} setQuery={setQuery}/>
         </div>
     );
 };
