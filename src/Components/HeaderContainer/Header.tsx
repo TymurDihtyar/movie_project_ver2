@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <div className={css.header}>
             <div className={css.logo}>The MovieDB</div>
-            <div className={css.mid}>
+            <div>
                 <NavLink to={'movies'}>Movies</NavLink>
                 <NavLink to={'genres/:idGenres'}>Genres</NavLink>
                 <NavLink to={'search'}>Search</NavLink>
