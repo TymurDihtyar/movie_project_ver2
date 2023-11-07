@@ -1,24 +1,24 @@
-import {SearchForm} from "../Components/SearchContainer/SearchForm";
 import {useEffect, useState} from "react";
-import {IMovie} from "../interfaces";
 import {useSearchParams} from "react-router-dom";
-import {Movies} from "../Components";
-import {IKeyWord} from "../interfaces/keyWordInterface";
-import {searchService} from "../services/searchService";
+
+import {Movies, SearchForm} from "../Components";
+import {IMovie} from "../interfaces";
+import {searchService} from "../services";
 
 const SearchPage = () => {
-    const [movieKeyWord, setMovieKeyWord] = useState<IKeyWord>({Keywords:'dead'})
+    const [KeyWord, setKeyWord] = useState<string>( 'dead')
     const [moviesKeyWord, setMoviesKeyWord] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page') ? query.get('page') : '1'
 
     useEffect(() => {
-        searchService.getByKeyWord(page, movieKeyWord.Keywords).then(({data})=>setMoviesKeyWord(data.results))
-    }, [page, movieKeyWord]);
+        searchService.getByKeyWord(page, KeyWord).then(({data}) => setMoviesKeyWord(data.results))
+    }, [page, KeyWord]);
 
     return (
         <div>
-            <SearchForm setMovieKeyWord={setMovieKeyWord}/>
+            <SearchForm setKeyWord={setKeyWord}/>
+            <hr/>
             <Movies movies={moviesKeyWord} page={page} setQuery={setQuery}/>
         </div>
     );

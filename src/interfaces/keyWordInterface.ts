@@ -1,3 +1,3 @@
 export interface IKeyWord {
-    Keywords: string
+    Keyword: string
 }

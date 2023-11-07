@@ -1,25 +1,25 @@
 import {FC, PropsWithChildren} from 'react';
 import {useForm} from "react-hook-form";
-import {IKeyWord} from "../../../interfaces/keyWordInterface";
+
+import {IKeyWord} from "../../../interfaces";
 import {ISetState} from "../../../types";
 
 interface IProps extends PropsWithChildren {
-    setMovieKeyWord: ISetState<IKeyWord>
+    setKeyWord: ISetState<string>
 }
 
-const SearchForm:FC<IProps> = ({setMovieKeyWord}) => {
+const SearchForm:FC<IProps> = ({setKeyWord}) => {
     const {reset, handleSubmit, register} = useForm()
 
     const search = async (keyWord: IKeyWord) => {
-        setMovieKeyWord(keyWord)
+        setKeyWord(keyWord.Keyword)
         reset()
     };
 
     return (
         <form onSubmit={handleSubmit(search)}>
-            <input type="text" placeholder={'Keywords'} {...register('Keywords')}/>
+            <input type="text" placeholder={'Keyword'} {...register('Keyword')}/>
             <button>Search</button>
-            <hr/>
         </form>
     );
 };

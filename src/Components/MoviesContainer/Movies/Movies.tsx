@@ -14,13 +14,11 @@ interface IProps extends PropsWithChildren {
 const Movies: FC<IProps> = ({movies, setQuery, page}) => {
 
     function prevHandler() {
-        const prevPage = +page - 1;
-        setQuery({page: prevPage.toString()});
+        setQuery({page: `${+page - 1}`});
     }
 
     function nextHandler() {
-        const nextPage = +page + 1;
-        setQuery({page: nextPage.toString()});
+        setQuery({page: `${+page + 1}`});
     }
 
     return (

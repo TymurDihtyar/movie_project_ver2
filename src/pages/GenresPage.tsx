@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
+import {Outlet} from "react-router-dom";
 
-import {genresService} from "../services/genresService";
 import {IGenre} from "../interfaces";
 import {Genres} from "../Components/GenresContainer";
-import {Outlet} from "react-router-dom";
+import {genresService} from "../services";
 
 const GenresPage = () => {
     const [genres, setGenres] = useState<IGenre[]>([])
@@ -11,7 +11,6 @@ const GenresPage = () => {
     useEffect(() => {
         genresService.getAll().then(({data:{genres}}) => setGenres(genres))
     }, []);
-
 
     return (
         <div>
