@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 
 import css from './Header.module.css'
-import CustomizedSwitches from "./Switcher";
+import {Switcher} from "./Switcher";
 
 const Header = () => {
     return (
@@ -13,7 +13,7 @@ const Header = () => {
                 <NavLink to={'search'}>Search</NavLink>
             </div>
             <div className={css.switchUser}>
-                <CustomizedSwitches/>
+                <Switcher/>
                 <div className={css.user}>
                     <img src="https://cdn-icons-png.flaticon.com/512/848/848006.png" alt="user"/>
                     <h6>User77</h6>
