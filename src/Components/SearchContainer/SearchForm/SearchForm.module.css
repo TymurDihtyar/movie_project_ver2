@@ -17,6 +17,7 @@
     box-sizing: border-box;
     border: none;
     margin-right: 20px;
+    transition: 0.5s;
 
 }
 .myForm button {
@@ -29,4 +30,10 @@
     box-sizing: border-box;
     color: #e65100;
     background-color: #ffffff;
+    border: none;
+    transition: 0.5s;
+}
+
+.myForm button:hover {
+    scale: 110%;
 }
