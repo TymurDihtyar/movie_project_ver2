@@ -3,3 +3,8 @@
     color: #e65100;
     margin: 0 10px;
 }
+
+.genre:hover {
+    color: #faaf00;
+    cursor: pointer;
+}

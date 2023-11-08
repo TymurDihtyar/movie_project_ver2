@@ -20,7 +20,13 @@ const MovieInfo: FC<IProps> = ({movie, characters}) => {
         <div className={css.all}>
             <div className={css.info}>
                 <div>
-                    <img src={`${urls.poster(poster_path)}`} alt="original_title"/>
+                    {
+                        poster_path ?
+                            <img src={`${urls.poster(poster_path)}`} alt={original_title}/>
+                            :
+                            <img src='https://w7.pngwing.com/pngs/130/516/png-transparent-brown-hair-anime-blond-amagi-brilliant-park-fiction-anime-cg-artwork-black-hair-hand-thumbnail.png'
+                                 alt={original_title}/>
+                    }
                 </div>
                 <div className={css.movieInfo}>
                     <h3>{original_title}</h3>

@@ -14,7 +14,7 @@ interface IProps extends PropsWithChildren {
 const Movie: FC<IProps> = ({item}) => {
     const {id, original_title, poster_path, vote_average} = item;
     const navigate = useNavigate()
-    https://w7.pngwing.com/pngs/580/954/png-transparent-blend-s-anime-manga-cosplay-drawing-girl-face-child-black-hair-human-thumbnail.png
+
     return (
         <div className={css.movie}>
             {

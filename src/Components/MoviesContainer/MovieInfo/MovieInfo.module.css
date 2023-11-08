@@ -65,6 +65,11 @@ img {
     margin-bottom: 5px;
 }
 
+.info img {
+    height: 750px;
+    width: 500px;
+}
+
 h3 {
     font-size: 50px;
     font-family: 'Bebas Neue', sans-serif;
