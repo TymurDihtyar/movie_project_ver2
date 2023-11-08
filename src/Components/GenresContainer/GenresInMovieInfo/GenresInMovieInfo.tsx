@@ -1,6 +1,7 @@
 import {FC, PropsWithChildren} from 'react';
-import css from "./GenresInMovieInfo.module.css";
 import {useNavigate} from "react-router-dom";
+
+import css from "./GenresInMovieInfo.module.css";
 
 interface IProps extends PropsWithChildren {
     item: {id:number, name:string}
