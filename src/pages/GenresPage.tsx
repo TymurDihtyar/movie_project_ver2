@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Outlet} from "react-router-dom";
 
 import {IGenre} from "../interfaces";
-import {Genres} from "../Components/GenresContainer";
+import {Genres} from "../Components";
 import {genresService} from "../services";
 
 const GenresPage = () => {
