@@ -26,7 +26,7 @@ const Movies: FC<IProps> = ({movies, setQuery, page}) => {
             </div>
             <div className={css.paginator}>
                 <Pagination page={+page} count={500}
-                            variant="outlined" color="primary"
+                            variant="outlined" color="standard"
                             shape="rounded" size="large"
                             onChange={handlerPageChange}/>
             </div>

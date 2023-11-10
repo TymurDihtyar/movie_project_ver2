@@ -68,6 +68,7 @@ img {
 .info img {
     height: 750px;
     width: 500px;
+    transition: 0.5s;
 }
 
 h3 {
