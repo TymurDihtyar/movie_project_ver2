@@ -5,7 +5,7 @@ import {Switcher} from "./Switcher";
 
 const Header = () => {
     return (
-        <div className={'header'}>
+        <div id={'header'}>
             <div className={'logo'}>The MovieDB</div>
             <div>
                 <NavLink to={'movies'}>Movies</NavLink>
