@@ -1,6 +1,6 @@
 import {FC, PropsWithChildren} from 'react';
-import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {Button} from "@mui/material";
 
 import {IGenre} from "../../../interfaces";
 import css from './Genre.module.css'

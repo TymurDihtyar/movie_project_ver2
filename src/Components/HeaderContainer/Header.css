@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .header {
-    background-color: #1c1c1c;
+    background: linear-gradient(152deg, #000000 0%, #c74e03 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 150px;
     font-size: 40px;
     font-family: 'Bebas Neue', sans-serif;
-    color: #e65100;
+    color: #ffffff;
     letter-spacing: 1px;
+    transition: 0.5s;
 }
 
 .header a {
@@ -33,6 +34,7 @@
 
 .user img {
     height: 60px;
+    border-radius: 50%;
 }
 
 .user h6 {
@@ -48,4 +50,9 @@
 }
 .header label {
     color: white;
+}
+
+.dark{
+    background: linear-gradient(152deg, #c74e03 0%, #000000 100%);
+    transition: 0.5s;
 }

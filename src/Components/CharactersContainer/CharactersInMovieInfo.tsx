@@ -1,7 +1,8 @@
 import {FC, PropsWithChildren} from 'react';
-import css from "./CharectersContainer.module.css";
+
 import {urls} from "../../constants/urls";
 import {ICast} from "../../interfaces";
+import css from "./CharectersContainer.module.css";
 
 interface IProps extends PropsWithChildren {
     item: ICast

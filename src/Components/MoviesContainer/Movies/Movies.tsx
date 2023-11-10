@@ -20,11 +20,17 @@ const Movies: FC<IProps> = ({movies, setQuery, page}) => {
     }
 
     return (
-        <div className={css.allMovies}>
-            {movies.map(item => <Movie key={item.id} item={item}/>)}
-            <Pagination page={+page} count={500} variant="outlined" color="primary"
-                        shape="rounded" size="large" onChange={handlerPageChange}/>
-        </div>
+        <>
+            <div className={css.allMovies}>
+                {movies.map(item => <Movie key={item.id} item={item}/>)}
+            </div>
+            <div className={css.paginator}>
+                <Pagination page={+page} count={500}
+                            variant="outlined" color="primary"
+                            shape="rounded" size="large"
+                            onChange={handlerPageChange}/>
+            </div>
+        </>
     );
 };
 

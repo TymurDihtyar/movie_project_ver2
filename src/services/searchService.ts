@@ -1,6 +1,7 @@
+import {axiosService} from "./axiosService";
+
 import {IRes} from "../types";
 import {IData} from "../interfaces";
-import {axiosService} from "./axiosService";
 import {urls} from "../constants/urls";
 
 const searchService = {

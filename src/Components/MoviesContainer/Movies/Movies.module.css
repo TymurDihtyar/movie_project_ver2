@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;
+    padding: 20px
 }
 
 .butt {
@@ -30,4 +30,13 @@
     color: #ffffff;
     background-color: #e65100;
     border: none;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background: #e65100;
+    width: 100%;
 }

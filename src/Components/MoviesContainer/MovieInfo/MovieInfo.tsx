@@ -37,7 +37,7 @@ const MovieInfo: FC<IProps> = ({movie, characters}) => {
                         </div>
                     </div>
                     <div className={css.rating}>
-                        <h4>Rating:</h4>
+                        <h4>Rating: {Math.round(vote_average*10)/10}</h4>
                         <Rating name="customized-10" defaultValue={vote_average} precision={0.1} max={10} size="large"
                                 emptyIcon={<StarIcon style={{opacity: 1, color: 'gray'}} fontSize="inherit"/>}
                                 readOnly/>
