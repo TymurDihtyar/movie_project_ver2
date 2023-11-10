@@ -1,7 +1,6 @@
 .character {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
     text-align: center;
     font-family: 'Bebas Neue', sans-serif;

@@ -6,7 +6,6 @@ import {IMovie} from "../../../interfaces";
 import {Movie} from "../Movie";
 import css from './Movies.module.css'
 
-
 interface IProps extends PropsWithChildren {
     movies: IMovie[]
     setQuery: SetURLSearchParams
@@ -25,10 +24,8 @@ const Movies: FC<IProps> = ({movies, setQuery, page}) => {
                 {movies.map(item => <Movie key={item.id} item={item}/>)}
             </div>
             <div className={css.paginator}>
-                <Pagination page={+page} count={500}
-                            variant="outlined" color="standard"
-                            shape="rounded" size="large"
-                            onChange={handlerPageChange}/>
+                <Pagination page={+page} count={500} variant="outlined" color="standard"
+                            shape="rounded" size="large" onChange={handlerPageChange}/>
             </div>
         </>
     );
