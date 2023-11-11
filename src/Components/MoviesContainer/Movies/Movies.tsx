@@ -10,9 +10,10 @@ interface IProps extends PropsWithChildren {
     movies: IMovie[]
     setQuery: SetURLSearchParams
     page: string
+    maxPage: number
 }
 
-const Movies: FC<IProps> = ({movies, setQuery, page}) => {
+const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
 
     const handlerPageChange = (event: any, page: number): void => {
         setQuery({page: `${page}`})
@@ -24,7 +25,7 @@ const Movies: FC<IProps> = ({movies, setQuery, page}) => {
                 {movies.map(item => <Movie key={item.id} item={item}/>)}
             </div>
             <div className={css.paginator}>
-                <Pagination page={+page} count={500} variant="outlined" color="standard"
+                <Pagination page={+page} count={(maxPage > 500) ? 500: maxPage} variant="outlined" color="standard"
                             shape="rounded" size="large" onChange={handlerPageChange}/>
             </div>
         </>

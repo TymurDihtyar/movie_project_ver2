@@ -9,14 +9,18 @@ const MoviesPage = () => {
     const [movies, setMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page')
+    const [maxPage, setMaxPage] = useState<number>(null)
 
     useEffect(() => {
-        moviesService.getAll(page).then(({data}) => setMovies(data.results))
+        moviesService.getAll(page).then(({data}) => {
+            setMovies(data.results)
+            setMaxPage(data.total_pages)
+        })
     }, [page]);
 
     return (
         <div>
-            <Movies movies={movies} setQuery={setQuery} page={page}/>
+            <Movies movies={movies} setQuery={setQuery} page={page} maxPage={maxPage}/>
         </div>
     );
 };
