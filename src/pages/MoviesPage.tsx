@@ -8,8 +8,8 @@ import {Movies} from "../Components";
 const MoviesPage = () => {
     const [movies, setMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page')
     const [maxPage, setMaxPage] = useState<number>(500)
+    const page = query.get('page')
 
     useEffect(() => {
         moviesService.getAll(page).then(({data}) => {

@@ -9,8 +9,8 @@ const SearchKeyWordPage = () => {
     let {searchWord} = useParams<string>()
     const [moviesKeyWord, setMoviesKeyWord] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page') ? query.get('page') : '1'
     const [maxPage, setMaxPage] = useState<number>(500)
+    const page = query.get('page') ? query.get('page') : '1'
 
     useEffect(() => {
         if (searchWord === ':searchWord') {
