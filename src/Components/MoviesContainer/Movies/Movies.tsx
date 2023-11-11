@@ -1,4 +1,4 @@
-import {FC, PropsWithChildren} from 'react';
+import {ChangeEvent, FC, PropsWithChildren} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
 import {Pagination} from "@mui/material";
 
@@ -15,7 +15,7 @@ interface IProps extends PropsWithChildren {
 
 const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
 
-    const handlerPageChange = (event: any, page: number): void => {
+    const handlerPageChange = (event: ChangeEvent<unknown>, page: number): void => {
         setQuery({page: `${page}`})
     }
 
