@@ -10,7 +10,7 @@ const GenreIdPage = () => {
     const [genreMovies, setGenreMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page') ? query.get('page') : '1'
-    const [maxPage, setMaxPage] = useState<number>(null)
+    const [maxPage, setMaxPage] = useState<number>(500)
 
     useEffect(() => {
         genresService.getMoviesById(page, idGenres).then(({data}) => {
