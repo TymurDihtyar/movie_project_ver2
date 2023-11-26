@@ -1,26 +1,22 @@
 import {useSearchParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-
-import {moviesService} from "../services";
-import {IMovie} from "../interfaces";
+import {useEffect} from "react";
 import {Movies} from "../Components";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
+import {moviesActions} from "../redux/slices/moviesSlice";
 
 const MoviesPage = () => {
-    const [movies, setMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
-    const [maxPage, setMaxPage] = useState<number>(500)
     const page = query.get('page')
+    const dispatch = useAppDispatch();
+    const {movies, total_pages} = useAppSelector(state => state.movies)
 
     useEffect(() => {
-        moviesService.getAll(page).then(({data}) => {
-            setMovies(data.results)
-            setMaxPage(data.total_pages)
-        })
-    }, [page]);
+        dispatch(moviesActions.getMovies({page}))
+    }, [page, dispatch]);
 
     return (
         <div>
-            <Movies movies={movies} setQuery={setQuery} page={page} maxPage={maxPage}/>
+            <Movies movies={movies} setQuery={setQuery} page={page} maxPage={total_pages}/>
         </div>
     );
 };

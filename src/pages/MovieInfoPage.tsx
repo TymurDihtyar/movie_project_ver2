@@ -1,23 +1,23 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-import {moviesService, characterService} from "../services";
-import {IOneMove, ICast} from "../interfaces";
 import {MovieInfo} from "../Components";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
+import {moviesActions} from "../redux/slices/moviesSlice";
 
 const MovieInfoPage = () => {
     const {id} = useParams<string>()
-    const [movie, setMovie] = useState<IOneMove>(null)
-    const [characters, setCharacters] = useState<ICast[]>([])
+    const {movieById, characters} = useAppSelector(state => state.movies)
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        moviesService.getById(id).then(({data}) => setMovie(data))
-        characterService.getById(id).then(({data: {cast}}) => setCharacters(cast))
+        dispatch(moviesActions.getMovieById({id}))
+        dispatch(moviesActions.getCharacters({id}))
     }, [id]);
 
     return (
         <div>
-            {movie && <MovieInfo movie={movie} characters={characters}/>}
+            {movieById && <MovieInfo movie={movieById} characters={characters}/>}
         </div>
     );
 };
