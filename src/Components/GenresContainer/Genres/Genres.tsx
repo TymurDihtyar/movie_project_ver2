@@ -1,15 +1,12 @@
-import React, {FC, PropsWithChildren} from 'react';
 import {ButtonGroup} from "@mui/material";
 
-import {IGenre} from "../../../interfaces";
 import {Genre} from "../Genre";
 import css from './Genres.module.css'
+import {useAppSelector} from "../../../hooks/reduxHooks";
 
-interface IProps extends PropsWithChildren {
-    genres:IGenre[]
-}
 
-const Genres:FC<IProps> = ({genres}) => {
+const Genres = () => {
+    const {genres} = useAppSelector(state => state.movies)
 
     return (
         <ButtonGroup className={css.buttGroup} variant="contained" aria-label=" outlined primary button group" size={"large"} color='warning'>

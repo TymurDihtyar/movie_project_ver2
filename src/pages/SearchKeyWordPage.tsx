@@ -4,32 +4,26 @@ import {useParams, useSearchParams} from "react-router-dom";
 import {Movies} from "../Components";
 import {IMovie} from "../interfaces";
 import {moviesService, searchService} from "../services";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
+import {moviesActions} from "../redux/slices/moviesSlice";
 
 const SearchKeyWordPage = () => {
     let {searchWord} = useParams<string>()
-    const [moviesKeyWord, setMoviesKeyWord] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
     const [maxPage, setMaxPage] = useState<number>(500)
     const page = query.get('page') ? query.get('page') : '1'
 
-    useEffect(() => {
-        if (searchWord === ':searchWord') {
-            moviesService.getAll(page).then(({data}) => {
-                setMoviesKeyWord(data.results)
-                setMaxPage(data.total_pages)
-            })
+    const {movies, moviesByKeyWord, total_pages} = useAppSelector(state => state.movies)
+    const dispatch = useAppDispatch();
 
-        } else {
-            searchService.getByKeyWord(page, searchWord).then(({data}) => {
-                setMoviesKeyWord(data.results)
-                setMaxPage(data.total_pages)
-            })
-        }
+    useEffect(() => {
+        dispatch(moviesActions.getMoviesByKeyWord({page, query: searchWord}))
     }, [page, searchWord]);
 
     return (
         <div>
-            <Movies movies={moviesKeyWord} page={page} setQuery={setQuery} maxPage={maxPage}/>
+            <Movies movies={(searchWord === ':searchWord') ? movies : moviesByKeyWord} page={page} setQuery={setQuery}
+                    maxPage={total_pages}/>
         </div>
     );
 };

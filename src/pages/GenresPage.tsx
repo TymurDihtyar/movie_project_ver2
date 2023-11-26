@@ -1,20 +1,20 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Outlet} from "react-router-dom";
 
-import {IGenre} from "../interfaces";
 import {Genres} from "../Components";
-import {genresService} from "../services";
+import {useAppDispatch} from "../hooks/reduxHooks";
+import {moviesActions} from "../redux/slices/moviesSlice";
 
 const GenresPage = () => {
-    const [genres, setGenres] = useState<IGenre[]>([])
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        genresService.getAll().then(({data:{genres}}) => setGenres(genres))
+        dispatch(moviesActions.getGenres())
     }, []);
 
     return (
         <div>
-            <Genres genres={genres}/>
+            <Genres/>
             <Outlet/>
         </div>
     );

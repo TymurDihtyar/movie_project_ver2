@@ -1,20 +1,27 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {ICast, IChar, IData, IMovie, IOneMove} from "../../interfaces";
+import {ICast, IChar, IData, IGenre, IGenres, IMovie, IOneMove} from "../../interfaces";
 import {AxiosError} from "axios";
-import {characterService, moviesService} from "../../services";
+import {characterService, genresService, moviesService, searchService} from "../../services";
+import {_default} from "@emotion/react/_isolated-hnrs/dist/emotion-react-_isolated-hnrs.cjs.default";
 
 interface IState {
     total_pages: number
-    movies: IMovie[],
+    movies: IMovie[]
     movieById: IOneMove
     characters: ICast[]
+    genres: IGenre[]
+    moviesByGenres: IMovie[]
+    moviesByKeyWord: IMovie[]
 }
 
 const initialState: IState = {
     total_pages: null,
     movies: [],
     movieById: null,
-    characters: null
+    characters: null,
+    genres: null,
+    moviesByGenres: [],
+    moviesByKeyWord: []
 }
 
 const getMovies = createAsyncThunk<IData, { page: string }>(
@@ -56,6 +63,45 @@ const getCharacters = createAsyncThunk<IChar, { id: string }>(
     }
 )
 
+const getGenres = createAsyncThunk<IGenres, void>(
+    'moviesSlice/getGenres',
+    async (_, {rejectWithValue}) => {
+        try {
+            const {data} = await genresService.getAll()
+            return data
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response?.data)
+        }
+    }
+)
+
+const getMoviesByGenre = createAsyncThunk<IData, {page:string, with_genres:string}>(
+    'moviesSlice/getMoviesByGenre',
+    async ({page, with_genres}, {rejectWithValue})=> {
+        try {
+            const {data} = await genresService.getMoviesByGenre(page, with_genres)
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response?.data)
+        }
+    }
+)
+
+const getMoviesByKeyWord = createAsyncThunk<IData, {page:string, query:string}>(
+    'moviesSlice/getMoviesByKeyWord',
+    async ({page, query}, {rejectWithValue})=> {
+        try {
+            const {data} = await searchService.getByKeyWord(page, query)
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response?.data)
+        }
+    }
+)
+
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
@@ -73,6 +119,19 @@ const moviesSlice = createSlice({
             .addCase(getCharacters.fulfilled, (state, action) => {
                 state.characters = action.payload.cast
             })
+            .addCase(getGenres.fulfilled, (state, action) => {
+                state.genres = action.payload.genres
+            })
+            .addCase(getMoviesByGenre.fulfilled,(state, action) => {
+                const {total_pages, results} = action.payload
+                state.moviesByGenres = results
+                state.total_pages = total_pages
+            })
+            .addCase(getMoviesByKeyWord.fulfilled, (state, action) => {
+                const {total_pages, results} = action.payload
+                state.moviesByKeyWord = results
+                state.total_pages = total_pages
+            })
 })
 
 const {reducer: moviesReducer, actions} = moviesSlice
@@ -81,6 +140,9 @@ const moviesActions = {
     ...actions,
     getMovies,
     getMovieById,
-    getCharacters
+    getCharacters,
+    getGenres,
+    getMoviesByGenre,
+    getMoviesByKeyWord
 }
 export {moviesReducer, moviesActions}

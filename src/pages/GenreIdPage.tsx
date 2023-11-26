@@ -1,27 +1,24 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 
-import {IMovie} from "../interfaces";
 import {Movies} from "../Components";
-import {genresService} from "../services";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
+import {moviesActions} from "../redux/slices/moviesSlice";
 
 const GenreIdPage = () => {
     const {idGenres} = useParams<string>()
-    const [genreMovies, setGenreMovies] = useState<IMovie[]>([])
     const [query, setQuery] = useSearchParams({page: '1'});
-    const [maxPage, setMaxPage] = useState<number>(500)
     const page = query.get('page') ? query.get('page') : '1'
+    const {moviesByGenres, total_pages} = useAppSelector(state => state.movies)
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        genresService.getMoviesById(page, idGenres).then(({data}) => {
-            setGenreMovies(data.results)
-            setMaxPage(data.total_pages)
-        })
+        dispatch(moviesActions.getMoviesByGenre({page, with_genres:idGenres}))
     }, [page, idGenres]);
 
     return (
         <div>
-            <Movies movies={genreMovies} page={page} setQuery={setQuery} maxPage={maxPage}/>
+            <Movies movies={moviesByGenres} page={page} setQuery={setQuery} maxPage={total_pages}/>
         </div>
     );
 };
