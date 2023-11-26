@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ICast, IChar, IData, IGenre, IGenres, IMovie, IOneMove} from "../../interfaces";
 import {AxiosError} from "axios";
 import {characterService, genresService, moviesService, searchService} from "../../services";
-import {_default} from "@emotion/react/_isolated-hnrs/dist/emotion-react-_isolated-hnrs.cjs.default";
 
 interface IState {
     total_pages: number
