@@ -1,20 +1,15 @@
-import {FC, PropsWithChildren} from 'react';
 import {Rating} from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
 
-import {ICast, IOneMove} from "../../../interfaces";
-import {urls} from "../../../constants/urls";
+import {urls} from "../../../constants";
 import {GenresInMovieInfo} from "../../GenresContainer";
 import {CharactersInMovieInfo} from "../../CharactersContainer";
+import {useAppSelector} from "../../../hooks";
 import css from './MovieInfo.module.css'
 
-interface IProps extends PropsWithChildren {
-    movie: IOneMove
-    characters: ICast[]
-}
-
-const MovieInfo: FC<IProps> = ({movie, characters}) => {
-    const {poster_path, original_title, overview, vote_average, genres, release_date, runtime, backdrop_path} = movie
+const MovieInfo= () => {
+    const {movieById, characters} = useAppSelector(state => state.movies)
+    const {poster_path, original_title, overview, vote_average, genres, release_date, runtime} = movieById
 
     return (
         <div className={css.all}>

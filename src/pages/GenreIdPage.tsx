@@ -9,6 +9,7 @@ const GenreIdPage = () => {
     const {idGenres} = useParams<string>()
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page') ? query.get('page') : '1'
+
     const {moviesByGenres, total_pages} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
 

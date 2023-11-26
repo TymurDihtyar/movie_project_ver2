@@ -14,7 +14,7 @@ interface IState {
 }
 
 const initialState: IState = {
-    total_pages: null,
+    total_pages: 500,
     movies: [],
     movieById: null,
     characters: null,

@@ -1,8 +1,9 @@
 import {useSearchParams} from "react-router-dom";
 import {useEffect} from "react";
+
 import {Movies} from "../Components";
-import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
-import {moviesActions} from "../redux/slices/moviesSlice";
+import {useAppDispatch, useAppSelector} from "../hooks";
+import {moviesActions} from "../redux/slices";
 
 const MoviesPage = () => {
     const [query, setQuery] = useSearchParams({page: '1'});
