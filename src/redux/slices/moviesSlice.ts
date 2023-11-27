@@ -114,6 +114,7 @@ const moviesSlice = createSlice({
         builder
             .addCase(getMovieById.fulfilled, (state, action) => {
                 state.movieById = action.payload
+                state.isLoading = false
             })
             .addCase(getCharacters.fulfilled, (state, action) => {
                 state.characters = action.payload.cast
