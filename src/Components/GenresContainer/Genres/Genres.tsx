@@ -2,7 +2,7 @@ import {ButtonGroup} from "@mui/material";
 
 import {Genre} from "../Genre";
 import css from './Genres.module.css'
-import {useAppSelector} from "../../../hooks/reduxHooks";
+import {useAppSelector} from "../../../hooks";
 
 
 const Genres = () => {

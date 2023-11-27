@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
 import {ICast, IChar, IData, IGenre, IGenres, IMovie, IOneMove} from "../../interfaces";
 import {AxiosError} from "axios";
 import {characterService, genresService, moviesService, searchService} from "../../services";
@@ -9,8 +9,8 @@ interface IState {
     movieById: IOneMove
     characters: ICast[]
     genres: IGenre[]
-    moviesByGenres: IMovie[]
-    moviesByKeyWord: IMovie[]
+    errors: boolean
+    isLoading: boolean
 }
 
 const initialState: IState = {
@@ -19,8 +19,8 @@ const initialState: IState = {
     movieById: null,
     characters: null,
     genres: null,
-    moviesByGenres: [],
-    moviesByKeyWord: []
+    errors: null,
+    isLoading: null,
 }
 
 const getMovies = createAsyncThunk<IData, { page: string }>(
@@ -92,8 +92,13 @@ const getMoviesByKeyWord = createAsyncThunk<IData, {page:string, query:string}>(
     'moviesSlice/getMoviesByKeyWord',
     async ({page, query}, {rejectWithValue})=> {
         try {
-            const {data} = await searchService.getByKeyWord(page, query)
-            return data
+            if (query===':searchWord') {
+                const {data} = await moviesService.getAll(page)
+                return data
+            }else{
+                const {data} = await searchService.getByKeyWord(page, query)
+                return data
+            }
         }catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response?.data)
@@ -107,11 +112,6 @@ const moviesSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(getMovies.fulfilled, (state, action) => {
-                const {total_pages, results} = action.payload
-                state.movies = results
-                state.total_pages = total_pages
-            })
             .addCase(getMovieById.fulfilled, (state, action) => {
                 state.movieById = action.payload
             })
@@ -121,15 +121,20 @@ const moviesSlice = createSlice({
             .addCase(getGenres.fulfilled, (state, action) => {
                 state.genres = action.payload.genres
             })
-            .addCase(getMoviesByGenre.fulfilled,(state, action) => {
+            .addMatcher(isFulfilled(getMovies, getMoviesByGenre, getMoviesByKeyWord), (state, action) => {
                 const {total_pages, results} = action.payload
-                state.moviesByGenres = results
+                state.movies = results
                 state.total_pages = total_pages
+                state.movieById = null
+                state.errors = false
+                state.isLoading = false
             })
-            .addCase(getMoviesByKeyWord.fulfilled, (state, action) => {
-                const {total_pages, results} = action.payload
-                state.moviesByKeyWord = results
-                state.total_pages = total_pages
+            .addMatcher(isRejected(getMovieById, getCharacters, getGenres, getMovies, getMoviesByGenre, getMoviesByKeyWord),(state) => {
+                state.errors = true
+                state.isLoading = false
+            })
+            .addMatcher(isPending(getMovieById, getCharacters, getGenres, getMovies, getMoviesByGenre, getMoviesByKeyWord),(state) => {
+                state.isLoading = true
             })
 })
 

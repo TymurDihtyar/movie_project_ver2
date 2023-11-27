@@ -2,8 +2,8 @@ import {useEffect} from "react";
 import {Outlet} from "react-router-dom";
 
 import {Genres} from "../Components";
-import {useAppDispatch} from "../hooks/reduxHooks";
-import {moviesActions} from "../redux/slices/moviesSlice";
+import {useAppDispatch} from "../hooks";
+import {moviesActions} from "../redux/slices";
 
 const GenresPage = () => {
     const dispatch = useAppDispatch();

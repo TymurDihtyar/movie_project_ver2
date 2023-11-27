@@ -8,6 +8,7 @@ import {moviesActions} from "../redux/slices";
 const MoviesPage = () => {
     const [query, setQuery] = useSearchParams({page: '1'});
     const page = query.get('page')
+
     const dispatch = useAppDispatch();
     const {movies, total_pages} = useAppSelector(state => state.movies)
 
