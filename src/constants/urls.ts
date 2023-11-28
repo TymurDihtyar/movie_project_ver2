@@ -11,7 +11,8 @@ const urls = {
     poster: (key: string) => `${poster}${key}`,
     search,
     characters: (id: string) => `${characters}/${id}/credits`,
-    movie: (id: string) => `${characters}/${id}`
+    movie: (id: string) => `${characters}/${id}`,
+    trailer: (id: string) => `${characters}/${id}/videos`
 }
 
 export {baseURL, urls}
