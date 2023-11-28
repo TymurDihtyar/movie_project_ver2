@@ -12,3 +12,9 @@
     background: #e65100;
     width: 100%;
 }
+.dark {
+    background-color: #343434;
+}
+.light {
+    background-color: #ffffff;
+}

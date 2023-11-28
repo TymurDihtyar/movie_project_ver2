@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-#header {
-    background: linear-gradient(152deg, #000000 0%, #c74e03 100%);
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,13 +12,13 @@
     transition: 0.5s;
 }
 
-#header a {
+.header a {
     text-decoration: none;
     color: aliceblue;
     margin: 0 20px;
 }
 
-#header a[class='active'] {
+.header a[class='active'] {
     color: #e65100;
 }
 
@@ -49,6 +48,15 @@
     justify-content: space-between;
 }
 
-#header label {
+.header label {
     color: white;
+}
+
+.dark {
+    background: linear-gradient(152deg, #c74e03 0%, #000000 100%);
+    transition: 0.5s;
+}
+.light {
+    background: linear-gradient(152deg, #000000 0%, #c74e03 100%);
+    transition: 0.5s;
 }

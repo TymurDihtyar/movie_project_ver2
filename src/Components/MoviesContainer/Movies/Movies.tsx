@@ -5,6 +5,7 @@ import {Pagination} from "@mui/material";
 import {IMovie} from "../../../interfaces";
 import {Movie} from "../Movie";
 import css from './Movies.module.css'
+import {useAppSelector} from "../../../hooks";
 
 interface IProps extends PropsWithChildren {
     movies: IMovie[]
@@ -14,6 +15,7 @@ interface IProps extends PropsWithChildren {
 }
 
 const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
+    const {theme} = useAppSelector(state => state.theme)
 
     const handlerPageChange = (event: ChangeEvent<unknown>, page: number): void => {
         setQuery({page: `${page}`})
@@ -21,7 +23,7 @@ const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
 
     return (
         <>
-            <div className={css.allMovies}>
+            <div className={`${theme ? css.dark : css.light} ${css.allMovies}`}>
                 {movies.map(item => <Movie key={item.id} item={item}/>)}
             </div>
             <div className={css.paginator}>

@@ -1,16 +1,17 @@
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
+import {useAppDispatch} from "../../hooks";
+import {themeAction} from "../../redux/slices";
 
 const Switcher = () => {
     const localSwitch = JSON.parse(localStorage.getItem('switch')) || false
     const [checked, setChecked] = useState(localSwitch);
+    const dispatch = useAppDispatch();
 
-    if (checked) {
-        document.body.classList.add('dark-theme');
-    } else {
-        document.body.classList.remove('dark-theme');
-    }
+    useEffect(() => {
+        dispatch(themeAction.setTheme(localSwitch))
+    }, [checked]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setChecked(event.target.checked);

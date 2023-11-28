@@ -11,12 +11,4 @@ code {
     font-family: 'Bebas Neue', sans-serif;
 }
 
-.dark-theme {
-    background-color: #343434;
-}
-
-.dark-theme #header {
-    background: linear-gradient(152deg, #c74e03 0%, #000000 100%);
-    transition: 0.5s;
-}
 
