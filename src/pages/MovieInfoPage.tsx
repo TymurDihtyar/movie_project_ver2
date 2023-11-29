@@ -10,7 +10,6 @@ const MovieInfoPage = () => {
     const {movieById, characters, trailers} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
 
-
     useEffect(() => {
         dispatch(moviesActions.getMovieById({id}))
         dispatch(moviesActions.getTrailers({id}))

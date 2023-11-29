@@ -16,7 +16,6 @@ interface IProps extends PropsWithChildren {
 
 const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
     const {theme} = useAppSelector(state => state.theme)
-    const url = window.location.href
 
     const handlerPageChange = (event: ChangeEvent<unknown>, page: number): void => {
         setQuery({page: `${page}`})
@@ -28,8 +27,8 @@ const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
                 {movies.map(item => <Movie key={item.id} item={item}/>)}
             </div>
             <div className={css.paginator}>
-                <a href={url}><Pagination  page={+page} count={(maxPage > 500) ? 500: maxPage} variant="outlined" color="standard"
-                                              shape="rounded" size="large" onChange={handlerPageChange}/></a>
+                <Pagination page={+page} count={(maxPage > 500) ? 500 : maxPage} variant="outlined" color="standard"
+                            shape="rounded" size="large" onChange={handlerPageChange}/>
             </div>
         </>
     );

@@ -4,7 +4,7 @@ import {Rating} from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
 import {IMovie} from "../../../interfaces";
-import {urls} from "../../../constants/urls";
+import {urls} from "../../../constants";
 import css from './Movie.module.css'
 
 interface IProps extends PropsWithChildren {
