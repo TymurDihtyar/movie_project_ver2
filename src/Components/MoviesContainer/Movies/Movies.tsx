@@ -4,8 +4,8 @@ import {Pagination} from "@mui/material";
 
 import {IMovie} from "../../../interfaces";
 import {Movie} from "../Movie";
-import css from './Movies.module.css'
 import {useAppSelector} from "../../../hooks";
+import css from './Movies.module.css'
 
 interface IProps extends PropsWithChildren {
     movies: IMovie[]
@@ -16,6 +16,7 @@ interface IProps extends PropsWithChildren {
 
 const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
     const {theme} = useAppSelector(state => state.theme)
+    const url = window.location.href
 
     const handlerPageChange = (event: ChangeEvent<unknown>, page: number): void => {
         setQuery({page: `${page}`})
@@ -27,8 +28,8 @@ const Movies: FC<IProps> = ({movies, setQuery, page, maxPage}) => {
                 {movies.map(item => <Movie key={item.id} item={item}/>)}
             </div>
             <div className={css.paginator}>
-                <Pagination page={+page} count={(maxPage > 500) ? 500: maxPage} variant="outlined" color="standard"
-                            shape="rounded" size="large" onChange={handlerPageChange}/>
+                <a href={url}><Pagination  page={+page} count={(maxPage > 500) ? 500: maxPage} variant="outlined" color="standard"
+                                              shape="rounded" size="large" onChange={handlerPageChange}/></a>
             </div>
         </>
     );
