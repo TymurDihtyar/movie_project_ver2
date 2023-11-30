@@ -5,6 +5,7 @@ import {characterService, genresService, moviesService, searchService} from "../
 import {ITrailer, ITrailers} from "../../interfaces/trailerInterface";
 
 interface IState {
+    page: string
     total_pages: number
     movies: IMovie[]
     movieById: IOneMove
@@ -16,6 +17,7 @@ interface IState {
 }
 
 const initialState: IState = {
+    page: null,
     total_pages: 500,
     movies: [],
     movieById: null,
@@ -54,11 +56,11 @@ const getMovieById = createAsyncThunk<IOneMove, { id: string }>(
 
 const getTrailers = createAsyncThunk<ITrailers, { id: string }>(
     'moviesSlice/getTrailers',
-    async ({id}, {rejectWithValue})=>{
+    async ({id}, {rejectWithValue}) => {
         try {
             const {data} = await moviesService.getTrailer(id)
             return data
-        }catch (e) {
+        } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response?.data)
         }
@@ -125,7 +127,11 @@ const getMoviesByKeyWord = createAsyncThunk<IData, { page: string, query: string
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setPage:(state, action) => {
+            state.page = action.payload.page
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(getMovieById.fulfilled, (state, action) => {

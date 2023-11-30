@@ -7,19 +7,20 @@ import {moviesActions} from "../redux/slices";
 
 const SearchKeyWordPage = () => {
     let {searchWord} = useParams<string>()
-    const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page') ? query.get('page') : '1'
-
-    const {movies, total_pages} = useAppSelector(state => state.movies)
+    const {page, movies} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
+    const [_, setQuery] = useSearchParams();
+    useEffect(() => {
+        setQuery({page})
+    }, []);
 
     useEffect(() => {
-        dispatch(moviesActions.getMoviesByKeyWord({page, query: searchWord}))
-    }, [page, searchWord]);
+        page && dispatch(moviesActions.getMoviesByKeyWord({page, query: searchWord}))
+    }, [page, dispatch, searchWord]);
 
     return (
         <div>
-            <Movies movies={movies} page={page} setQuery={setQuery} maxPage={total_pages}/>
+            <Movies movies={movies}/>
         </div>
     );
 };

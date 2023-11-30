@@ -1,24 +1,26 @@
-import {useSearchParams} from "react-router-dom";
 import {useEffect} from "react";
 
 import {Movies} from "../Components";
 import {useAppDispatch, useAppSelector} from "../hooks";
 import {moviesActions} from "../redux/slices";
+import {useSearchParams} from "react-router-dom";
 
 const MoviesPage = () => {
-    const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page')
-
     const dispatch = useAppDispatch();
-    const {movies, total_pages} = useAppSelector(state => state.movies)
+    const {page, movies} = useAppSelector(state => state.movies)
+    const [_, setQuery] = useSearchParams();
 
     useEffect(() => {
-        dispatch(moviesActions.getMovies({page}))
-    }, [page, dispatch]);
+        setQuery({page})
+    }, []);
+
+    useEffect(() => {
+        page && dispatch(moviesActions.getMovies({page}))
+    }, [page]);
 
     return (
         <div>
-            <Movies movies={movies} setQuery={setQuery} page={page} maxPage={total_pages}/>
+            <Movies movies={movies}/>
         </div>
     );
 };

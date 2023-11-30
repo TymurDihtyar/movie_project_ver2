@@ -7,19 +7,21 @@ import {moviesActions} from "../redux/slices";
 
 const GenreIdPage = () => {
     const {idGenres} = useParams<string>()
-    const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page') ? query.get('page') : '1'
-
-    const {movies, total_pages} = useAppSelector(state => state.movies)
+    const {page, movies} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
+    const [_, setQuery] = useSearchParams();
 
     useEffect(() => {
-        dispatch(moviesActions.getMoviesByGenre({page, with_genres:idGenres}))
-    }, [page, idGenres]);
+        setQuery({page})
+    }, []);
+
+    useEffect(() => {
+        page && dispatch(moviesActions.getMoviesByGenre({page, with_genres: idGenres}))
+    }, [page, idGenres, dispatch]);
 
     return (
         <div>
-            <Movies movies={movies} page={page} setQuery={setQuery} maxPage={total_pages}/>
+            <Movies movies={movies}/>
         </div>
     );
 };
