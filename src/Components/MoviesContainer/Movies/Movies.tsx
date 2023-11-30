@@ -11,7 +11,7 @@ interface IProps extends PropsWithChildren {
     movies: IMovie[]
 }
 
-const Movies: FC<IProps> = ({movies, }) => {
+const Movies: FC<IProps> = ({movies}) => {
     const {theme} = useAppSelector(state => state.theme)
 
     return (

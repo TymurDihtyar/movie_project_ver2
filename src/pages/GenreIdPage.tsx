@@ -13,7 +13,7 @@ const GenreIdPage = () => {
 
     useEffect(() => {
         setQuery({page})
-    }, []);
+    }, [idGenres]);
 
     useEffect(() => {
         page && dispatch(moviesActions.getMoviesByGenre({page, with_genres: idGenres}))

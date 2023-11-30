@@ -10,9 +10,10 @@ const SearchKeyWordPage = () => {
     const {page, movies} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
     const [_, setQuery] = useSearchParams();
+
     useEffect(() => {
         setQuery({page})
-    }, []);
+    }, [searchWord]);
 
     useEffect(() => {
         page && dispatch(moviesActions.getMoviesByKeyWord({page, query: searchWord}))
