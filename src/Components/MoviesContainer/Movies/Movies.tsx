@@ -1,6 +1,4 @@
-import {ChangeEvent, FC, PropsWithChildren} from 'react';
-import {SetURLSearchParams} from "react-router-dom";
-import {Pagination} from "@mui/material";
+import {FC, PropsWithChildren} from 'react';
 
 import {IMovie} from "../../../interfaces";
 import {Movie} from "../Movie";

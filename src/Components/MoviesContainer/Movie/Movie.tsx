@@ -18,11 +18,9 @@ const Movie: FC<IProps> = ({item}) => {
     return (
         <div className={css.movie}>
             {
-                poster_path ?
-                    <img onClick={() => navigate(`/movies/${id}`)} src={`${urls.poster(poster_path)}`} alt={original_title}/>
-                    :
-                    <img onClick={() => navigate(`/movies/${id}`)} src='https://w7.pngwing.com/pngs/130/516/png-transparent-brown-hair-anime-blond-amagi-brilliant-park-fiction-anime-cg-artwork-black-hair-hand-thumbnail.png'
-                         alt={original_title}/>
+                <img onClick={() => navigate(`/movies/${id}`)}
+                     src={poster_path ? `${urls.poster(poster_path)}` : 'https://w7.pngwing.com/pngs/130/516/png-transparent-brown-hair-anime-blond-amagi-brilliant-park-fiction-anime-cg-artwork-black-hair-hand-thumbnail.png'}
+                     alt={original_title}/>
             }
             <Rating name="customized-10" defaultValue={vote_average} precision={0.1} max={10} size="medium"
                     emptyIcon={<StarIcon style={{opacity: 1, color: 'gray'}} fontSize="inherit"/>}
