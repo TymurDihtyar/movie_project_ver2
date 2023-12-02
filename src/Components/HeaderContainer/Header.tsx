@@ -7,10 +7,6 @@ import {moviesActions} from "../../redux/slices";
 
 const Header = () => {
     const {theme} = useAppSelector(state => state.theme)
-    const dispatch = useAppDispatch();
-    // const resetPage = () => {
-    //     dispatch(moviesActions.setPage({page:'1'}))
-    // }
 
     return (
         <div className={`${theme ? css.dark : css.light} ${css.header}`}>
