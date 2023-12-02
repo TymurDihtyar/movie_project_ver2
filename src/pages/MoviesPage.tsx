@@ -8,7 +8,7 @@ import {useSearchParams} from "react-router-dom";
 const MoviesPage = () => {
     const dispatch = useAppDispatch();
     const {page, movies} = useAppSelector(state => state.movies)
-    const [_, setQuery] = useSearchParams();
+    const [, setQuery] = useSearchParams();
 
     useEffect(() => {
         setQuery({page})
@@ -16,7 +16,7 @@ const MoviesPage = () => {
 
     useEffect(() => {
         page && dispatch(moviesActions.getMovies({page}))
-    }, [page]);
+    }, [page, dispatch]);
 
     return (
         <div>

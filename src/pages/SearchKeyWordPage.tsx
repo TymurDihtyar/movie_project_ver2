@@ -9,7 +9,7 @@ const SearchKeyWordPage = () => {
     let {searchWord} = useParams<string>()
     const {page, movies} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
-    const [_, setQuery] = useSearchParams();
+    const [, setQuery] = useSearchParams();
 
     useEffect(() => {
         setQuery({page})
