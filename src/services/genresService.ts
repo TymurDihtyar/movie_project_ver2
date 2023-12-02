@@ -2,7 +2,7 @@ import {axiosService} from "./axiosService";
 
 import {IRes} from "../types";
 import {IData, IGenres} from "../interfaces";
-import {urls} from "../constants/urls";
+import {urls} from "../constants";
 
 const genresService = {
     getAll: (): IRes<IGenres> => axiosService.get(urls.genre),

@@ -1,6 +1,6 @@
 import {axiosService} from "./axiosService";
 
-import {urls} from "../constants/urls";
+import {urls} from "../constants";
 import {IRes} from "../types";
 import {IChar} from "../interfaces";
 

@@ -1,6 +1,6 @@
 import {FC, PropsWithChildren} from 'react';
 
-import {urls} from "../../constants/urls";
+import {urls} from "../../constants";
 import {ICast} from "../../interfaces";
 import css from "./CharectersInMovieInfo.module.css";
 

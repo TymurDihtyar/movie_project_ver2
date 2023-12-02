@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
-import {ICast, IChar, IData, IGenre, IGenres, IMovie, IOneMove} from "../../interfaces";
+
 import {AxiosError} from "axios";
+import {ICast, IChar, IData, IGenre, IGenres, IMovie, IOneMove, ITrailer, ITrailers} from "../../interfaces";
 import {characterService, genresService, moviesService, searchService} from "../../services";
-import {ITrailer, ITrailers} from "../../interfaces/trailerInterface";
+
 
 interface IState {
     page: string

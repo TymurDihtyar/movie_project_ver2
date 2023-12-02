@@ -1,9 +1,8 @@
 import {NavLink} from "react-router-dom";
 
 import {Switcher} from "./Switcher";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {useAppSelector} from "../../hooks";
 import css from './Header.module.css'
-import {moviesActions} from "../../redux/slices";
 
 const Header = () => {
     const {theme} = useAppSelector(state => state.theme)
