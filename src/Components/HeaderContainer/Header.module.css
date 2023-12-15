@@ -11,15 +11,16 @@
     letter-spacing: 1px;
     transition: 0.5s;
 }
+.nav{
+    align-items: center;
+    display: flex;
+    width: 700px;
+}
 
-.header a {
+.nav a {
     text-decoration: none;
     color: aliceblue;
     margin: 0 20px;
-}
-
-.header a[class='active'] {
-    color: #e65100;
 }
 
 .logo {

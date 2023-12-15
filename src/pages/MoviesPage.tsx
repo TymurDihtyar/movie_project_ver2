@@ -15,7 +15,8 @@ const MoviesPage = () => {
     }, []);
 
     useEffect(() => {
-        page && dispatch(moviesActions.getMovies({page}))
+        dispatch(moviesActions.getMovies({page}))
+        dispatch(moviesActions.getGenres())
     }, [page, dispatch]);
 
     return (

@@ -15,6 +15,8 @@ interface IState {
     genres: IGenre[]
     errors: boolean
     isLoading: boolean
+    searchWord: string
+    searchGenres: string
 }
 
 const initialState: IState = {
@@ -26,7 +28,9 @@ const initialState: IState = {
     genres: null,
     errors: null,
     isLoading: null,
-    trailers: null
+    trailers: null,
+    searchWord: null,
+    searchGenres: null
 }
 
 const getMovies = createAsyncThunk<IData, { page: string }>(
@@ -111,13 +115,8 @@ const getMoviesByKeyWord = createAsyncThunk<IData, { page: string, query: string
     'moviesSlice/getMoviesByKeyWord',
     async ({page, query}, {rejectWithValue}) => {
         try {
-            if (query === ':searchWord') {
-                const {data} = await moviesService.getAll(page)
-                return data
-            } else {
-                const {data} = await searchService.getByKeyWord(page, query)
-                return data
-            }
+            const {data} = await searchService.getByKeyWord(page, query)
+            return data
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response?.data)
@@ -129,8 +128,14 @@ const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
     reducers: {
-        setPage:(state, action) => {
+        setPage: (state, action) => {
             state.page = action.payload.page
+        },
+        setSearchWord: (state, action) => {
+            state.searchWord = action.payload.searchWord
+        },
+        setSearchGenres:(state, action) => {
+            state.searchGenres = action.payload.searchGenres.join(',')
         }
     },
     extraReducers: builder =>

@@ -13,7 +13,8 @@ const SearchForm = () => {
 
     const search = (keyWord: IKeyWord) => {
         const searchWord =  keyWord.Keyword
-        navigate(`${searchWord}`)
+        dispatch(moviesActions.setSearchWord({searchWord}))
+        navigate(`movies/searchWord`)
         reset()
         dispatch(moviesActions.setPage({page:'1'}))
     };

@@ -3,18 +3,19 @@ import {NavLink} from "react-router-dom";
 import {Switcher} from "./Switcher";
 import {useAppSelector} from "../../hooks";
 import css from './Header.module.css'
+import {SearchForm} from "../SearchContainer";
+import {TransitionsModal} from "../ModalContainer/Modal";
 
 const Header = () => {
     const {theme} = useAppSelector(state => state.theme)
-
     return (
         <div className={`${theme ? css.dark : css.light} ${css.header}`}>
             <div className={css.logo}>The MovieDB</div>
-                <div>
-                    <NavLink to={'movies'}>Movies</NavLink>
-                    <NavLink to={'genres/:idGenres'}>Genres</NavLink>
-                    <NavLink to={'search/:searchWord'}>Search</NavLink>
-                </div>
+            <div className={css.nav}>
+                <NavLink to={'movies'}>Movies</NavLink>
+                <TransitionsModal/>
+                <SearchForm/>
+            </div>
             <div className={css.switchUser}>
                 <Switcher/>
                 <div className={css.user}>
